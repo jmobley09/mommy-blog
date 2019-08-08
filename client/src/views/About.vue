@@ -12,3 +12,13 @@
     </p>
   </v-container>
 </template>
+
+<script>
+  export default {
+    name: 'About',
+
+    components: {
+      About: () => import('@/components/home/About')
+    }
+  }
+</script>
