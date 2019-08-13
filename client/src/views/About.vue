@@ -3,7 +3,7 @@
     id="about"
     tag="section"
   >
-    <base-subheading>About Us</base-subheading>
+    <base-subheading>About Me</base-subheading>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut tortor tellus. Donec maximus curs us pulvinar.
       Proin vehicula eros mauris, sit amet rutrum libero vestibulum ac. Morbi ullamcorper eu lacus vulputate consect.
@@ -18,7 +18,6 @@
     name: 'About',
 
     components: {
-      About: () => import('@/components/home/About')
     }
   }
 </script>

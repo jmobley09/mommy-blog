@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="main">
     <core-toolbar />
 
     <core-drawer />
@@ -27,3 +27,9 @@
     }
   }
 </script>
+
+<style>
+.main {
+  background-color: antiquewhite;
+}
+</style>
