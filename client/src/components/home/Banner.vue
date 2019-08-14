@@ -43,9 +43,15 @@
           width="100%"
           :src="image"
         >
-         <v-row class="fill-height" align="center" justify="center">
+         <v-row class="fill-height flex-container">
             <div class="display-3">{{titles[i]}}</div>
+            <div class="banner-btn">
+            <v-btn>Click Me!</v-btn>
+            </div>
           </v-row>
+          <!-- <v-row class="fill-height flex-container" align="center">
+              
+          </v-row> -->
         </v-carousel-item>
       </v-carousel>
   </base-card>
@@ -80,3 +86,15 @@
     },
   }
 </script>
+
+<style scoped>
+.flex-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+.banner-btn { 
+  align-self: flex-end;
+  padding-right: 100px;
+}
+</style>
