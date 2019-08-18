@@ -1,57 +1,46 @@
 <template>
-  <v-container
-    grid-list-xl
-  >
+  <v-container grid-list-xl>
     <v-layout wrap>
       <v-flex xs12>
         <slot />
       </v-flex>
 
-      <feed-card
-        v-for="(article, i) in homeArticles"
-        :key="article.title"
-        :size="layout[i]"
-        :value="article"
-      />
+      <feed-card v-for="(article) in homeArticles" :key="article.title" :size="3" :value="article" />
     </v-layout>
   </v-container>
 </template>
 
 <script>
-  // Utilities
-  import {
-    mapState
-  } from 'vuex'
+// Utilities
+import { mapState } from "vuex";
+require(["underscore"]);
 
-  export default {
-    name: 'Feed',
+export default {
+  name: "Feed",
 
-    components: {
-      FeedCard: () => import('@/components/FeedCard')
-    },
+  components: {
+    FeedCard: () => import("@/components/FeedCard")
+  },
 
-    data: () => ({
-      layout: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-      page: 1
-    }),
+  data: () => ({}),
 
-    computed: {
-      ...mapState(['articles']),
-      pages () {
-        return Math.ceil(this.articles.length / 11)
-      },
-      homeArticles () {
-        const start = (this.page - 1) * 11
-        const stop = this.page * 11
+  computed: {
+    ...mapState(["articles"]),
+    homeArticles() {
+      const categorized = _.groupBy(this.articles, "category");
 
-        return this.articles.slice(start, stop)
-      }
-    },
+      // let categorized = this.articles.filter(
+      //   article => article.category == "Parenting"
+      // );
+      console.log(categorized);
+      return categorized;
+    }
+  },
 
-    watch: {
-      page () {
-        window.scrollTo(0, 0)
-      }
+  watch: {
+    page() {
+      window.scrollTo(0, 0);
     }
   }
+};
 </script>
