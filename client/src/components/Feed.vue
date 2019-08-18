@@ -4,43 +4,59 @@
       <v-flex xs12>
         <slot />
       </v-flex>
-
-      <feed-card v-for="(article) in homeArticles" :key="article.title" :size="3" :value="article" />
+      <v-divider />
+      <feed-card
+        v-for="(article) in parenting"
+        :key="article.title"
+        :size="3"
+        :value="article"
+      />
+      <v-divider />
+      <feed-card
+        v-for="(article) in essential_oils"
+        :key="article.title"
+        :size="3"
+        :value="article"
+      />
     </v-layout>
   </v-container>
 </template>
 
 <script>
 // Utilities
-import { mapState } from "vuex";
-require(["underscore"]);
+  import { mapState } from 'vuex'
 
-export default {
-  name: "Feed",
+  export default {
+    name: 'Feed',
 
-  components: {
-    FeedCard: () => import("@/components/FeedCard")
-  },
+    components: {
+      FeedCard: () => import('@/components/FeedCard')
+    },
 
-  data: () => ({}),
+    data: () => ({}),
 
-  computed: {
-    ...mapState(["articles"]),
-    homeArticles() {
-      const categorized = _.groupBy(this.articles, "category");
+    computed: {
+      ...mapState(['articles']),
+      parenting () {
+        let categorized = this.articles.filter(
+          article => article.category === 'Parenting'
+        )
+        console.log(categorized)
+        return categorized
+      },
+      essential_oils () {
+        let categorized = this.articles.filter(
+          article => article.category === 'Essential Oils'
+        )
+        console.log(categorized)
+        return categorized
+      }
+    },
 
-      // let categorized = this.articles.filter(
-      //   article => article.category == "Parenting"
-      // );
-      console.log(categorized);
-      return categorized;
-    }
-  },
-
-  watch: {
-    page() {
-      window.scrollTo(0, 0);
+    watch: {
+      page () {
+        window.scrollTo(0, 0)
+      }
     }
   }
-};
 </script>

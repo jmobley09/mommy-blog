@@ -7,7 +7,7 @@
           height="400"
           width="100%"
           :src="require('@/assets/instagram/' + image)"
-        > -->
+    >-->
     <!-- <v-layout
         fill-height
         align-center
@@ -32,8 +32,7 @@
             Subscribe
           </v-btn>
         </v-flex>
-      </v-layout>-->
-
+    </v-layout>-->
     <v-carousel>
       <v-carousel-item
         v-for="(image, i) in images"
@@ -43,17 +42,17 @@
         width="100%"
         :src="image"
       >
-        <v-row class="fill-height flex-container">
+        <div class="fill-height flex-container">
           <div class="display-3">
             {{ titles[i] }}
           </div>
           <div class="banner-btn">
             <v-btn>Click Me!</v-btn>
           </div>
-        </v-row>
+        </div>
         <!-- <v-row class="fill-height flex-container" align="center">
 
-          </v-row> -->
+        </v-row>-->
       </v-carousel-item>
     </v-carousel>
   </base-card>
@@ -63,20 +62,8 @@
   export default {
     data () {
       return {
-        colors: [
-          'primary',
-          'secondary',
-          'yellow darken-2',
-          'red',
-          'orange'
-        ],
-        titles: [
-          'About',
-          'Essential Oils',
-          'Parenting',
-          'Recipes',
-          'Wellness'
-        ],
+        colors: ['primary', 'secondary', 'yellow darken-2', 'red', 'orange'],
+        titles: ['About', 'Essential Oils', 'Parenting', 'Recipes', 'Wellness'],
         images: [
           'https://waywintechnologies.com/images/abouts/about-us-1024x683.jpg',
           'https://i1.wp.com/carepluslivingsolutions.com.au/wp-content/uploads/2015/05/gardenmortarpestle-slider4.jpg?fit=1137%2C500&ssl=1',
