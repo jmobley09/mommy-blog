@@ -8,9 +8,9 @@
       </v-flex>
 
       <feed-card
-        v-for="(article, i) in homeArticles"
+        v-for="(article) in homeArticles"
         :key="article.title"
-        :size="layout[i]"
+        :size="3"
         :value="article"
       />
     </v-layout>
@@ -31,26 +31,27 @@
     },
 
     data: () => ({
-      layout: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-      page: 1
     }),
 
     computed: {
       ...mapState(['articles']),
-      pages () {
-        return Math.ceil(this.articles.length / 11)
-      },
       homeArticles () {
-        const start = (this.page - 1) * 11
-        const stop = this.page * 11
+        // sets mapped articles to local variable to get rid of "this" keyword
+        // makes filter function malfunction if this keyword is included
+        const articles = this.articles; 
 
-        return this.articles.slice(start, stop)
-      }
-    },
+        // filters the articles to match the one passed in
+        let filtered = articles.filter(article => article.category === "Essential Oils");
 
-    watch: {
-      page () {
-        window.scrollTo(0, 0)
+        // used to hold first 3 articles
+        const firstThree = [];
+
+        // determines first 3 articles in list
+        for(let i = 0; i < 3; i++) {
+          firstThree.push(filtered[i]);
+        }
+
+        return firstThree;
       }
     }
   }
