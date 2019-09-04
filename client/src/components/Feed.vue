@@ -1,14 +1,19 @@
 <template>
-  <v-container
-    grid-list-xl
-  >
+  <v-container grid-list-xl>
     <v-layout wrap>
       <v-flex xs12>
         <slot />
       </v-flex>
-
+      <v-divider />
       <feed-card
-        v-for="(article) in homeArticles"
+        v-for="(article) in parenting"
+        :key="article.title"
+        :size="3"
+        :value="article"
+      />
+      <v-divider />
+      <feed-card
+        v-for="(article) in essential_oils"
         :key="article.title"
         :size="3"
         :value="article"
@@ -18,10 +23,8 @@
 </template>
 
 <script>
-  // Utilities
-  import {
-    mapState
-  } from 'vuex'
+// Utilities
+  import { mapState } from 'vuex'
 
   export default {
     name: 'Feed',
@@ -30,28 +33,23 @@
       FeedCard: () => import('@/components/FeedCard')
     },
 
-    data: () => ({
-    }),
+    data: () => ({}),
 
     computed: {
       ...mapState(['articles']),
-      homeArticles () {
-        // sets mapped articles to local variable to get rid of "this" keyword
-        // makes filter function malfunction if this keyword is included
-        const articles = this.articles; 
-
-        // filters the articles to match the one passed in
-        let filtered = articles.filter(article => article.category === "Essential Oils");
-
-        // used to hold first 3 articles
-        const firstThree = [];
-
-        // determines first 3 articles in list
-        for(let i = 0; i < 3; i++) {
-          firstThree.push(filtered[i]);
-        }
-
-        return firstThree;
+      parenting () {
+        let categorized = this.articles.filter(
+          article => article.category === 'Parenting'
+        )
+        console.log(categorized)
+        return categorized
+      },
+      essential_oils () {
+        let categorized = this.articles.filter(
+          article => article.category === 'Essential Oils'
+        )
+        console.log(categorized)
+        return categorized
       }
     }
   }

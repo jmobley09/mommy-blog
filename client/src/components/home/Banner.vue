@@ -1,14 +1,14 @@
 <template>
   <base-card dark>
-      <!-- <v-img
+    <!-- <v-img
           v-for="image in images"
           :key="image"
           class="grey lighten-2"
           height="400"
           width="100%"
           :src="require('@/assets/instagram/' + image)"
-        > -->
-      <!-- <v-layout
+    >-->
+    <!-- <v-layout
         fill-height
         align-center
         pa-3
@@ -32,28 +32,29 @@
             Subscribe
           </v-btn>
         </v-flex>
-      </v-layout>-->
-
-      <v-carousel>
-        <v-carousel-item
-          v-for="(image, i) in images"
-          :key="i"
-          class="grey lighten-2"
-          height="400"
-          width="100%"
-          :src="image"
-        >
-         <v-row class="fill-height flex-container">
-            <div class="display-3">{{titles[i]}}</div>
-            <div class="banner-btn">
+    </v-layout>-->
+    <v-carousel>
+      <v-carousel-item
+        v-for="(image, i) in images"
+        :key="i"
+        class="grey lighten-2"
+        height="400"
+        width="100%"
+        :src="image"
+      >
+        <div class="fill-height flex-container">
+          <div class="display-3">
+            {{ titles[i] }}
+          </div>
+          <div class="banner-btn">
             <v-btn>Click Me!</v-btn>
-            </div>
-          </v-row>
-          <!-- <v-row class="fill-height flex-container" align="center">
-              
-          </v-row> -->
-        </v-carousel-item>
-      </v-carousel>
+          </div>
+        </div>
+        <!-- <v-row class="fill-height flex-container" align="center">
+
+        </v-row>-->
+      </v-carousel-item>
+    </v-carousel>
   </base-card>
 </template>
 
@@ -61,29 +62,17 @@
   export default {
     data () {
       return {
-        colors: [
-          'primary',
-          'secondary',
-          'yellow darken-2',
-          'red',
-          'orange',
-        ],
-        titles: [
-          'About',
-          'Essential Oils',
-          'Parenting',
-          'Recipes',
-          'Wellness',
-        ],
+        colors: ['primary', 'secondary', 'yellow darken-2', 'red', 'orange'],
+        titles: ['About', 'Essential Oils', 'Parenting', 'Recipes', 'Wellness'],
         images: [
           'https://waywintechnologies.com/images/abouts/about-us-1024x683.jpg',
           'https://i1.wp.com/carepluslivingsolutions.com.au/wp-content/uploads/2015/05/gardenmortarpestle-slider4.jpg?fit=1137%2C500&ssl=1',
           'https://riseandshine.childrensnational.org/wp-content/uploads/2017/09/Development-boy-with-measuring-tape-1137x500.jpg',
           'https://www.gazettenet.com/getattachment/10be4549-3214-4aad-b09b-02d96e21c1f7/c1-18Food-Tasting-menu-from-Norway-021817-ph15',
-          'http://www.gygicookingclasses.com/wp-content/uploads/2015/03/Cooking-Class-Main-Image-1.jpg',
+          'http://www.gygicookingclasses.com/wp-content/uploads/2015/03/Cooking-Class-Main-Image-1.jpg'
         ]
       }
-    },
+    }
   }
 </script>
 
@@ -93,7 +82,7 @@
   justify-content: center;
   padding-bottom: 50px;
 }
-.banner-btn { 
+.banner-btn {
   align-self: flex-end;
   padding-right: 100px;
 }
