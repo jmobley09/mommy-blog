@@ -4,16 +4,26 @@
       <v-flex xs12>
         <slot />
       </v-flex>
-      <v-divider />
       <feed-card
         v-for="(article) in parenting"
         :key="article.title"
         :size="3"
         :value="article"
       />
-      <v-divider />
       <feed-card
         v-for="(article) in essential_oils"
+        :key="article.title"
+        :size="3"
+        :value="article"
+      />
+      <feed-card
+        v-for="(article) in recipes"
+        :key="article.title"
+        :size="3"
+        :value="article"
+      />
+      <feed-card
+        v-for="(article) in wellness"
         :key="article.title"
         :size="3"
         :value="article"
@@ -41,15 +51,38 @@
         let categorized = this.articles.filter(
           article => article.category === 'Parenting'
         )
-        console.log(categorized)
-        return categorized
+
+        return this.firstThree(categorized);
       },
       essential_oils () {
         let categorized = this.articles.filter(
           article => article.category === 'Essential Oils'
         )
-        console.log(categorized)
-        return categorized
+        return this.firstThree(categorized);
+      },
+      recipes () {
+        let categorized = this.articles.filter(
+          article => article.category === 'Recipes'
+        )
+        return this.firstThree(categorized);
+      },
+      wellness () {
+        let categorized = this.articles.filter(
+          article => article.category === 'Wellness'
+        )
+        return this.firstThree(categorized);
+      }
+    },
+
+    methods: {
+      firstThree(arr) {
+        let first_three = [];
+
+        for (let i =0; i < 3; i++) {
+          first_three.push(arr[i]);
+        }
+
+        return first_three;
       }
     }
   }
