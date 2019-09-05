@@ -4,24 +4,37 @@
       <v-flex xs12>
         <slot />
       </v-flex>
+      <div class="divider" >Parenting
+        <v-divider></v-divider>
+      </div>
+
       <feed-card
         v-for="(article) in parenting"
         :key="article.title"
         :size="3"
         :value="article"
       />
+      <div class="divider" >Essential Oils
+        <v-divider></v-divider>
+      </div>
       <feed-card
         v-for="(article) in essential_oils"
         :key="article.title"
         :size="3"
         :value="article"
       />
+      <div class="divider" >Recipes
+        <v-divider></v-divider>
+      </div>
       <feed-card
         v-for="(article) in recipes"
         :key="article.title"
         :size="3"
         :value="article"
       />
+      <div class="divider" >Wellness
+        <v-divider></v-divider>
+      </div>
       <feed-card
         v-for="(article) in wellness"
         :key="article.title"
@@ -87,3 +100,11 @@
     }
   }
 </script>
+
+<style scoped>
+.divider {
+  width: 100%;
+  text-align: center;
+  font-size: 300%;
+}
+</style>
