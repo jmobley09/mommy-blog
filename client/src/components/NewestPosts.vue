@@ -1,16 +1,8 @@
 <template>
   <v-container pa-0>
     <base-subheading>Newest Blog Posts</base-subheading>
-    <v-layout
-      v-for="(article, i) in articles.slice(11, 14)"
-      :key="i"
-      align-center
-      mb-2
-    >
-      <v-flex
-        xs12
-        d-flex
-      >
+    <v-layout v-for="(article, i) in articles.slice(-3, -1)" :key="i" align-center mb-2>
+      <v-flex xs12 d-flex>
         <v-img
           :src="require(`@/assets/articles/${article.hero}`)"
           class="mr-3"
@@ -18,12 +10,8 @@
           max-width="36"
         />
         <div>
-          <div class="subheading">
-            Article Title
-          </div>
-          <div class="caption">
-            Date
-          </div>
+          <div class="subheading">Article Title</div>
+          <div class="caption">Date</div>
         </div>
       </v-flex>
     </v-layout>
@@ -31,14 +19,12 @@
 </template>
 
 <script>
-  // Utilities
-  import {
-    mapState
-  } from 'vuex'
+// Utilities
+import { mapGetters } from "vuex";
 
-  export default {
-    computed: {
-      ...mapState(['articles'])
-    }
+export default {
+  computed: {
+    ...mapGetters(["getArticles"])
   }
+};
 </script>
